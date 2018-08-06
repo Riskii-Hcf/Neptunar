@@ -2,9 +2,9 @@
   "name": "Neptunar",
   "description": "Neptunar",
   "version": "0.0.0",
-  "main": "launcher.js",
+  "main": "launch.js",
   "scripts": {
-    "start": "node launcher.js"
+    "start": "node launch.js"
   },
   "dependencies": {
     "discord.js": "11.1.0",
