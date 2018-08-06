@@ -26,7 +26,7 @@ let joinleaves = member.guild.channels.find("name","main-chat");
  
 if(!joinleaves) return;
  
-joinleaves.send(member.toString() + " has left... We will miss you! :cry:");
+joinleaves.send(member.toString() + " has left... ");
 });
  
 bot.on("message", function(message) {
@@ -37,26 +37,6 @@ if (!message.content.startsWith(prefix)) return;
 var args = message.content.substring(prefix.length).split(" ");
  
 switch (args[0].toLowerCase()) {
- 
-case "emojis":
-const emojiList = message.guild.emojis.map(e=>e.toString()).join(" ");
-message.channel.send(emojiList);
-break;
-case "8ball":
-if (args[1]) {
-  message.channel.sendMessage(':8ball: ' + message + '? - `' + eb[Math.floor(Math.random() * eb.length)] + '`');
-} else {
-  message.channel.sendMessage("Please provide a question");
-}
-break;
-case "coinflip":
-var result = Math.floor((Math.random() * 2) + 1);
-    if (result === 1) {
-    message.reply('The coin landed on heads');
-} else if (result === 2) {
-message.reply('The coin landed on tails');
-}
-break;
 		
 case "help":
 message.delete("help")
