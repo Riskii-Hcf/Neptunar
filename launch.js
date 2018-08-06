@@ -74,7 +74,7 @@ case "say":
 
 case "searchanime":
 if (args[1]) {
-    message.reply(`https://www.kissanime.ru/` + args[1]);
+    message.reply(`http://kissanime.ru/Anime/` + args[1]);
 } else {
     message.reply(`How to use: \n${prefix}searchanime [anime] **NOTICE: DONT USE SPACES, USE -**`);
 }
