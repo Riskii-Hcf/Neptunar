@@ -1,22 +1,34 @@
-const Discord = require("discord.js");
-
-
-const TOKEN =  "Mzg5NDg5Mjc3MzU4MDQ3MjY1.DRSZ7Q.EOCHuFln8hB4yj2PxgW5bDCJW3o"
-const PREFIX = "-"
-
-var bot = new Discord.Client();
+const Discord = require('discord.js');
+ 
+const bot = new Discord.Client();
+ 
+const token = "Hell Nah";
+ 
+var prefix = '-';
 
 bot.on("ready", function() {
-  bot.user.setGame(`-help | Neptunar | ${bot.guilds.size} servers!`,'https://twitch.tv/123silly');
+      bot.user.setGame("Neptunar | -help" , "https://www.twitch.tv/123silly");
     console.log(`Started bot as: ${bot.user.tag}!`);
 });
-
+ 
 bot.on("guildMemberAdd", function(member) {
-member.guild.channels.find("name","main-chat").sendMessage(member.toString() + " Welcome to the server! Make sure to read rules so you dont get punished!");
-console.log(`[SPY] A member joined a server!`)
-member.addRole(member.guild.roles.find("name", "[Private]"));
+let joinleaves = member.guild.channels.find("name","main-chat");
+if(!joinleaves) return;
+joinleaves.sendMessage(member.toString() + " welcome to the server!");
+ 
+if(!joinleaves) return;
+ 
 });
-
+ 
+bot.on("guildMemberRemove", function(member) {
+ 
+let joinleaves = member.guild.channels.find("name","main-chat");
+ 
+if(!joinleaves) return;
+ 
+joinleaves.send(member.toString() + " has left... We will miss you! :cry:");
+});
+ 
 bot.on("message", function(message) {
 if (message.author.equals(bot.user)) return;
  
@@ -36,15 +48,7 @@ if (args[1]) {
 } else {
   message.channel.sendMessage("Please provide a question");
 }
-break;	
-case "roast":
-if (args[1]) {
-  message.channel.sendMessage(':fire: ' + ' - ' + r[Math.floor(Math.random() * r.length)] + '');
-} else {
-  message.channel.sendMessage("Please provide a UserName Please");
-}
 break;
-
 case "coinflip":
 var result = Math.floor((Math.random() * 2) + 1);
     if (result === 1) {
@@ -80,10 +84,6 @@ break;
 case "ping":
 message.reply(`Pong! ${Math.round(bot.ping)}ms`);
 break;
-
-case "invite":
-message.reply(`Please Invite Me Here! \https://discordapp.com/api/oauth2/authorize?client_id=420323901034201089&permissions=2146958583&scope=bot`);
-break;
 		
 case "say":
     var sayargs = message.content.substring(5).split(" ");
@@ -99,7 +99,6 @@ if (args[1]) {
     message.reply(`How to use: \n${prefix}searchanime [anime] **NOTICE: DONT USE SPACES, USE - =**`);
 }
 break;
-
         case "kick":
     let modRoles = message.guild.roles.find("name", "Moderator");
         if (args[1]) {
@@ -200,7 +199,7 @@ var mc = new Discord.RichEmbed()
 message.channel.sendEmbed(mc)
 break;
 		
-  case "marry":
+    case "marry":
     let mar = message.mentions.users.first();
     if (!mar) {
       message.reply("Please mention a user to marry.");
